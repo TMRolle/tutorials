@@ -53,11 +53,12 @@ and
 [`config.pbtxt`](https://github.com/triton-inference-server/vllm_backend/blob/main/samples/model_repository/vllm_model/config.pbtxt),
 required to serve the [facebook/opt-125m](https://huggingface.co/facebook/opt-125m) model.
 ```
+TRITON_DOCKER_VERSION=23.12
 mkdir -p model_repository/vllm_model/1
-wget -P model_repository/vllm_model/1 https://raw.githubusercontent.com/triton-inference-server/vllm_backend/r<xx.yy>/samples/model_repository/vllm_model/1/model.json
-wget -P model_repository/vllm_model/ https://raw.githubusercontent.com/triton-inference-server/vllm_backend/r<xx.yy>/samples/model_repository/vllm_model/config.pbtxt
+wget -P model_repository/vllm_model/1 https://raw.githubusercontent.com/triton-inference-server/vllm_backend/r$TRITON_DOCKER_VERSION/samples/model_repository/vllm_model/1/model.json
+wget -P model_repository/vllm_model/ https://raw.githubusercontent.com/triton-inference-server/vllm_backend/r$TRITON_DOCKER_VERSION/samples/model_repository/vllm_model/config.pbtxt
 ```
-where <xx.yy> is the version of Triton that you want to use. Please note, that Triton's vLLM container has been introduced starting from 23.10 release.
+You can replace the value after `TRITON_DOCKER_VERSION=` with the version of Triton that you want to use if you wish to use a version of the Triton container other than 23.12. Please note, that Triton's vLLM container has been introduced starting from 23.10 release.
 
 The model repository should look like this:
 ```
