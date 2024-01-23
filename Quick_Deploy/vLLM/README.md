@@ -133,8 +133,11 @@ endpoint.
 
 Start Triton's SDK container with the following command:
 ```
+TRITON_DOCKER_VERSION=23.12
 docker run -it --net=host -v ${PWD}:/workspace/ nvcr.io/nvidia/tritonserver:$TRITON_DOCKER_VERSION-py3-sdk bash
 ```
+
+As before, change `TRITON_DOCKER_VERSION=23.12` as needed to match your desired version.
 
 Now, let's send an inference request:
 ```
