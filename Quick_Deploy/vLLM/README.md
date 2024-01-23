@@ -53,7 +53,7 @@ and
 [`config.pbtxt`](https://github.com/triton-inference-server/vllm_backend/blob/main/samples/model_repository/vllm_model/config.pbtxt),
 required to serve the [facebook/opt-125m](https://huggingface.co/facebook/opt-125m) model.
 ```
-TRITON_DOCKER_VERSION=23.12
+TRITON_DOCKER_VERSION=23.12 # Change to your desired container version
 mkdir -p model_repository/vllm_model/1
 wget -P model_repository/vllm_model/1 https://raw.githubusercontent.com/triton-inference-server/vllm_backend/r$TRITON_DOCKER_VERSION/samples/model_repository/vllm_model/1/model.json
 wget -P model_repository/vllm_model/ https://raw.githubusercontent.com/triton-inference-server/vllm_backend/r$TRITON_DOCKER_VERSION/samples/model_repository/vllm_model/config.pbtxt
@@ -133,11 +133,9 @@ endpoint.
 
 Start Triton's SDK container with the following command:
 ```
-TRITON_DOCKER_VERSION=23.12
+TRITON_DOCKER_VERSION=23.12 # Change to your desired container version
 docker run -it --net=host -v ${PWD}:/workspace/ nvcr.io/nvidia/tritonserver:$TRITON_DOCKER_VERSION-py3-sdk bash
 ```
-
-As before, change `TRITON_DOCKER_VERSION=23.12` as needed to match your desired version.
 
 Now, let's send an inference request:
 ```
@@ -174,6 +172,7 @@ wget https://raw.githubusercontent.com/triton-inference-server/vllm_backend/main
 
 Now, we are ready to start Triton's SDK container:
 ```
+TRITON_DOCKER_VERSION=23.12 # Change to your desired container version
 docker run -it --net=host -v ${PWD}:/workspace/ nvcr.io/nvidia/tritonserver:$TRITON_DOCKER_VERSION-py3-sdk bash
 ```
 
