@@ -104,12 +104,8 @@ Starting with 23.10 release, a dedicated container with vLLM pre-installed
 is available on [NGC.](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tritonserver)
 To use this container to launch Triton, you can use the docker command below.
 ```
-docker run --gpus all -it --net=host --rm -p 8001:8001 --shm-size=1G --ulimit memlock=-1 --ulimit stack=67108864 -v ${PWD}:/work -w /work nvcr.io/nvidia/tritonserver:<xx.yy>-vllm-python-py3 tritonserver --model-store ./model_repository
+docker run --gpus all -it --net=host --rm -p 8001:8001 --shm-size=1G --ulimit memlock=-1 --ulimit stack=67108864 -v ${PWD}:/work -w /work nvcr.io/nvidia/tritonserver:$TRITON_DOCKER_VERSION-vllm-python-py3 tritonserver --model-store ./model_repository
 ```
-Throughout the tutorial, \<xx.yy\> is the version of Triton
-that you want to use. Please note, that Triton's vLLM
-container was first published in 23.10 release, so any prior version
-will not work.
 
 After you start Triton you will see output on the console showing
 the server starting up and loading the model. When you see output
@@ -137,7 +133,7 @@ endpoint.
 
 Start Triton's SDK container with the following command:
 ```
-docker run -it --net=host -v ${PWD}:/workspace/ nvcr.io/nvidia/tritonserver:<xx.yy>-py3-sdk bash
+docker run -it --net=host -v ${PWD}:/workspace/ nvcr.io/nvidia/tritonserver:$TRITON_DOCKER_VERSION-py3-sdk bash
 ```
 
 Now, let's send an inference request:
@@ -175,7 +171,7 @@ wget https://raw.githubusercontent.com/triton-inference-server/vllm_backend/main
 
 Now, we are ready to start Triton's SDK container:
 ```
-docker run -it --net=host -v ${PWD}:/workspace/ nvcr.io/nvidia/tritonserver:<xx.yy>-py3-sdk bash
+docker run -it --net=host -v ${PWD}:/workspace/ nvcr.io/nvidia/tritonserver:$TRITON_DOCKER_VERSION-py3-sdk bash
 ```
 
 Within the container, run
